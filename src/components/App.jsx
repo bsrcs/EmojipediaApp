@@ -2,18 +2,6 @@ import React from "react";
 import Entry from "./Entry";
 import emojipedia from "../emojipedia";
 
-// Create Entry Component
-// Create props to replace hardcoded data
-function createCard(emoji){
-  return(
-    <Entry
-        key={emoji.id}
-        emoji={emoji.emoji}
-        name= {emoji.name}
-        description={emoji.meaning}
-      />
-  );
-}
 
 function App() {
   return (
@@ -23,9 +11,16 @@ function App() {
       </h1>
       <dl className="dictionary">
         {/* Map through the emojipedia array & render entry components.*/}
-        {emojipedia.map(createCard)}
+        {emojipedia.map( emojiTerm =>
+            <Entry
+              key={emojiTerm.id}
+              emoji={emojiTerm.emoji}
+              name={emojiTerm.name}
+              description={emojiTerm.meaning}
+            />   
+        )}
       </dl>
-      
+
     </div>
   );
 }
